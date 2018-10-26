@@ -1,0 +1,45 @@
+{% extends 'base/index.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<h1>Productos</h1><br>
+		<a class="btn mb-3" href="{% url 'tienda:nuevoPrd' %}">Nuevo Registro</a><br>
+		<table class="table table-borderless">
+			<thead class="thead">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Costo</th>
+					<th scope="col">Disponible</th>
+					<th scope="col">Número Existencias</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for producto in object_list %}
+				<tr>
+					<th scope="row">{{producto.id}}</td>
+					<td>{{producto.categoria_id}}</td>
+					<td>{{producto.nombre}}</td>
+					<td>{{producto.descripcion}}</td>
+					<td>{{producto.costo}}</td>
+					<td>{{producto.disponible}}</td>
+					<td>{{producto.numExistencias}}</td>
+				
+					<td>
+						<a  href="{% url 'tienda:modPrd' producto.id  %}" class="btn btn-primary">Editar</a>
+						<a  href="{% url 'tienda:rmvPrd' producto.id  %}" class="btn btn-danger">Eliminar</a>
+					</td>
+				{% empty %}
+					<td span="6">No hay cliente</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}
+{% block footer %}
+Proyecto Tienda
+{% endblock footer %}
