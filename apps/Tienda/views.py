@@ -9,6 +9,14 @@ from apps.Tienda.forms import CategoriaForm
 def index(request):
     return render(request,'base/index.html')
 
+
+# Ventas de Productos
+
+
+def ventas(request):
+    context = {'productos': Producto.objects.all()}
+    return render(request,'Tienda/ventas.html',context);
+
 #Categorías
 
 

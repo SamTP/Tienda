@@ -2,8 +2,6 @@
 
 {% block title %}Categorias{% endblock %}
 
-
-
 {% block content %}
 <h1>Categorías</h1><br>
 <div class="container-fluid mt-3">
@@ -27,7 +25,7 @@
 						<a  href="{% url 'tienda:rmvCat' categoria.id  %}" class="btn btn-danger">Eliminar</a>
 					</td>
 				{% empty %}
-					<td span="6">No hay cliente</td>
+					<td span="6">No hay Categorías Registradas</td>
 				</tr>
 				{% endfor %}
 			</tbody>

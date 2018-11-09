@@ -34,12 +34,9 @@
 						<a  href="{% url 'tienda:rmvPrd' producto.id  %}" class="btn btn-danger">Eliminar</a>
 					</td>
 				{% empty %}
-					<td span="6">No hay cliente</td>
+					<td span="6">No hay Productos Registrados</td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
 {% endblock %}
-{% block footer %}
-Proyecto Tienda
-{% endblock footer %}

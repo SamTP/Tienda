@@ -2,6 +2,8 @@ from django import forms
 from apps.Tienda.models import Producto
 from apps.Tienda.models import Categoria
 
+
+# Agrega o modifca un Producto
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
@@ -33,6 +35,8 @@ class ProductoForm(forms.ModelForm):
             'numExistencias': forms.TextInput(attrs={'class':'form-control'}),
         }
 
+
+# Agrega o Modifica una Categoria
 class CategoriaForm(forms.ModelForm):
     class Meta:
         model = Categoria

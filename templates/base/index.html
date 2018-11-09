@@ -6,11 +6,16 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible">
     <title>{% block title %}Proyecto{% endblock %}</title>
+    {% comment %} Favicon {% endcomment %}
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <!--Hoja de estilos principal-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!--Bloque para estilos diferentes posteriores-->
     {% block extracss %}
     {% endblock extracss %}
+    {% comment %} Scripts de Bootstrap {% endcomment %}
+    <script type="text/js" href="{% static 'js/main.js' %}"></script>
 </head>
 
 <body>
@@ -18,13 +23,11 @@
         {% block header %}
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Proyecto Tienda</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="{% url 'tienda:index' %}">Proyecto Tienda</a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarColor02">
+            <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'tienda:index' %}">Inicio<span class="sr-only">(current)</span></a>
@@ -35,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'tienda:cat' %}">Categorías</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tienda:ventas' %}">Ventas</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -43,9 +49,16 @@
     </header>
     <br>
     <div class="container">
-        {% block content %}Contenido de la página {% endblock %}</div>
+        {% block content %}
+        <p>
+            Proyecto Final Taller Django 
+        </p>
+        <p>
+            Samuel Toral Pacheco 239895
+        </p>
+        {% endblock %}</div>
     <br>
-    <footer class="container blockquote-footer">{% block footer %}Este es el pie de página {% endblock %}</footer>
+    <footer class="container blockquote-footer">{% block footer %}Taller Django{% endblock %}</footer>
 
 </body>
 
