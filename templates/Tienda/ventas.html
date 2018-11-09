@@ -24,20 +24,26 @@ Venta de Productos
 			<td>{{producto.costo}}</td>
 			<td>{{producto.disponible}}</td>
 			<td>{{producto.numExistencias}}</td>
-			<td>
-				<button type="button" class="btn btn-success">Agregar 1 al carrito</button>
-			</td>
+			{% if producto.disponible %}
+				<td>
+					<a  href="{% url 'tienda:resumen' producto.id  %}" class="btn btn-success">Comprar</a>
+				</td>
+			{% else %}
+				<td>
+					<a  href="{% url 'tienda:resumen' producto.id  %}" class="btn btn-danger disabled">Comprar</a>
+				</td>
+			{% endif %}
 			{% empty %}
 			<td span="6">No hay Productos Registrados</td>
 		</tr>
 		{% endfor %}
-		<tr>
+		<!-- <tr>
 			<td>
 				<form>
 					<input class="btn btn-success" type="button" value="Comprar	">
 				</form>
 			</td>
-		</tr>
+		</tr> -->
 	</tbody>
 </table>
 {% endblock content %}

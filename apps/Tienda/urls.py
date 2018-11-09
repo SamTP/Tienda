@@ -8,6 +8,7 @@ from apps.Tienda.views import nuevaCategoria
 from apps.Tienda.views import modificarCategoria
 from apps.Tienda.views import eliminarCategoria
 from apps.Tienda.views import ventas
+from apps.Tienda.views import resumenVentas
 
 app_name='tienda'
 urlpatterns = [
@@ -21,4 +22,5 @@ urlpatterns = [
    path('modCategoria/<idCategoria>',modificarCategoria,name="modCat"),
    path('rmvCategoria/<idCategoria>',eliminarCategoria,name="rmvCat"),
    path('ventas',ventas,name="ventas"),
+   path('resumen/<idProducto>',resumenVentas,name="resumen"),
 ]

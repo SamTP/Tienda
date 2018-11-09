@@ -4,6 +4,7 @@ from apps.Tienda.models import Producto
 from django.views.generic import ListView
 from apps.Tienda.forms import ProductoForm
 from apps.Tienda.forms import CategoriaForm
+from apps.Tienda.forms import Venta
 # Create your views here.
 
 def index(request):
@@ -15,7 +16,19 @@ def index(request):
 
 def ventas(request):
     context = {'productos': Producto.objects.all()}
-    return render(request,'Tienda/ventas.html',context);
+    return render(request,'Tienda/ventas.html',context)
+
+def resumenVentas(request,idProducto):
+    producto=Producto.objects.get(id=idProducto)
+    if(request.method=="GET"):
+        form = Venta(instance=producto)
+    else:
+        form = Venta(request.POST,instance=producto)
+        if form.is_valid():
+            form.save()
+        return redirect('tienda:prd')
+    return render(request, 'Tienda/resumenVenta.html',{'form':form})
+    # return render(request,'Tienda/resumenVenta.html')
 
 #Categorías
 
