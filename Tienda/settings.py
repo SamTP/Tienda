@@ -25,7 +25,8 @@ SECRET_KEY = '1kdob8qob1aop+87^&qsq0lj&goen9!g)izh+d@9ul^7lhp5t^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'samtp.pythonanywhere.com',]
 
 
 # Application definition
@@ -77,10 +78,10 @@ WSGI_APPLICATION = 'Tienda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tiendaBD',
-        'USER':'root',
-        'PASSWORD':'',
-        'HOST':'localhost',
+        'NAME': 'SamTP$tiendaBD',
+        'USER':'SamTP',
+        'PASSWORD':'123456..',
+        'HOST':'SamTP.mysql.pythonanywhere-services.com',
         'PORT':'3306',
     }
 }
