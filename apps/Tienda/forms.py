@@ -9,23 +9,27 @@ from apps.Tienda.models import Ventas
 class Venta(forms.ModelForm):
     class Meta:
         model = Ventas
+        # exclude=('producto','precio','total')
 
         fields = [
             'producto',
+            'precio',
             'cantidad',
             'total'
         ]
 
         labels = {
             'producto': 'Producto',
+            'precio':'Precio',
             'cantidad': 'Cantidad',
             'total': 'Total'
         }
 
         widgets = {
-            'producto': forms.TextInput(attrs={'class': 'form-control'}),
-            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
-            'total': forms.NumberInput(attrs={'class': 'form-control', 'disabled':''}),
+            'producto': forms.TextInput(attrs={'class': 'form-control','readonly':''}),
+            'precio':forms.NumberInput(attrs={'class': 'form-control','readonly':''}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control','onchange':'subtotal()','min':'0'}),
+            'total': forms.NumberInput(attrs={'class': 'form-control', 'readonly':''}),
         }
 
 

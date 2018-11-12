@@ -1,16 +1,23 @@
 {% extends 'base/index.html' %}
-
+{% load static %}
 {% block content %}
 
 <div class="container-fluid mt-3">
     <div class="row justify-content-center">
         <div class="col-6">
             <h1>Ventas</h1>
-            <form method="POST">
+            <form method="POST" >
                 {% csrf_token %}
                 {{form.as_p}}
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Realizar Compra</button>
             </form>
+            {% if messages %}
+                <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 </div>

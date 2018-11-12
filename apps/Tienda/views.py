@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from apps.Tienda.models import Categoria
 from apps.Tienda.models import Producto
+from apps.Tienda.models import Ventas
 from django.views.generic import ListView
 from apps.Tienda.forms import ProductoForm
 from apps.Tienda.forms import CategoriaForm
 from apps.Tienda.forms import Venta
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -20,15 +22,26 @@ def ventas(request):
 
 def resumenVentas(request,idProducto):
     producto=Producto.objects.get(id=idProducto)
-    if(request.method=="GET"):
-        form = Venta(instance=producto)
-    else:
-        form = Venta(request.POST,instance=producto)
+    total=0*producto.costo
+    nombre=producto.nombre+" "+producto.descripcion
+    costo=producto.costo
+    if request.method=='POST':
+        form = Venta(request.POST,initial={'producto':nombre,'cantidad':0,'total':total,'precio':costo})
         if form.is_valid():
-            form.save()
+            resta=form.cleaned_data['cantidad']
+            if(resta>producto.numExistencias):
+                messages.error(request," No hay sificiente producto en inventario para esa compra")
+                return render(request, 'Tienda/resumenVenta.html',{'form':form})
+            else:
+                producto.numExistencias=producto.numExistencias-resta
+                if(producto.numExistencias==0):
+                    producto.disponible=False
+                producto.save()
+                form.save()
         return redirect('tienda:prd')
+    else:
+        form = Venta(initial={'producto':nombre,'cantidad':0,'total':total,'precio':costo})
     return render(request, 'Tienda/resumenVenta.html',{'form':form})
-    # return render(request,'Tienda/resumenVenta.html')
 
 #Categorías
 

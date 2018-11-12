@@ -17,8 +17,10 @@ class Producto(models.Model):
     numExistencias = models.IntegerField()
 
 class Ventas(models.Model):
-    producto=models.ForeignKey(
-        Producto,blank=True, null=True,on_delete=models.CASCADE)
+    # producto=models.ForeignKey(
+    #     Producto,blank=True, null=True,on_delete=models.CASCADE)
+    producto=models.CharField(max_length=75,default=" ")
+    precio=models.DecimalField(decimal_places=2,max_digits=7,default=0)
     cantidad=models.IntegerField(default=0)
     total=models.DecimalField(decimal_places=2,max_digits=7,default=0)
 
