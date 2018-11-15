@@ -9,6 +9,7 @@ from apps.Tienda.views import modificarCategoria
 from apps.Tienda.views import eliminarCategoria
 from apps.Tienda.views import ventas
 from apps.Tienda.views import resumenVentas
+from apps.Tienda.views import ventasBsq
 
 app_name='tienda'
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
    path('rmvCategoria/<idCategoria>',eliminarCategoria,name="rmvCat"),
    path('ventas',ventas,name="ventas"),
    path('resumen/<idProducto>',resumenVentas,name="resumen"),
+   path('busqueda',ventasBsq,name="ventasBsq"),
 ]

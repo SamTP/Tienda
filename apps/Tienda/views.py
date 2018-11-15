@@ -20,6 +20,12 @@ def ventas(request):
     context = {'productos': Producto.objects.all()}
     return render(request,'Tienda/ventas.html',context)
 
+def ventasBsq(request):
+    nombrePrd=request.GET.get('campo')
+    context = {'productos': Producto.objects.filter(nombre=nombrePrd)}
+    return render(request,'Tienda/ventasBsq.html',context)
+
+
 def resumenVentas(request,idProducto):
     producto=Producto.objects.get(id=idProducto)
     total=0*producto.costo

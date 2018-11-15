@@ -6,10 +6,7 @@ Venta de Productos
 
 <h1>Venta de Productos</h1><br>
 <div class="container-fluid mt-3">
-	<form class="form-inline my-2 my-lg-0 " style="text-aling:left;" action="{% url 'tienda:ventasBsq' %}" method="GET">
-		<input class="form-control mr-sm-2" type="text" placeholder="Buscar por Nombre" name="campo">
-		<button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-	</form>
+	<a href="{% url 'tienda:ventas' %}">Regresar a Lista completa</a>
 </div><br>
 <table class="table table-borderless">
 	<thead class="thead">
@@ -40,16 +37,10 @@ Venta de Productos
 			</td>
 			{% endif %}
 			{% empty %}
-			<td span="6">No hay Productos Registrados</td>
+			<td span="6">No hay Productos Con ese Nombre</td>
 		</tr>
 		{% endfor %}
-		<!-- <tr>
-			<td>
-				<form>
-					<input class="btn btn-success" type="button" value="Comprar	">
-				</form>
-			</td>
-		</tr> -->
+		
 	</tbody>
 </table>
 {% endblock content %}
