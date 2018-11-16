@@ -5,19 +5,22 @@
 <div class="container-fluid mt-3">
     <div class="row justify-content-center">
         <div class="col-6">
+         {% if messages %}
+                <br>
+            {% for message in messages %}
+                <div class="alert alert-dismissible alert-danger" id="msg" >
+                    <button type="button" class="close"  onclick="cerrar()">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
             <h1>Ventas</h1>
             <form method="POST" >
                 {% csrf_token %}
                 {{form.as_p}}
-                <button type="submit" class="btn btn-primary">Realizar Compra</button>
+                <button type="submit" class="btn btn-primary" id="btn" disabled>Realizar Compra</button>
             </form>
-            {% if messages %}
-                <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-                </ul>
-            {% endif %}
+           
         </div>
     </div>
 </div>

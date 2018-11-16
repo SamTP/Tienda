@@ -39,6 +39,7 @@ def resumenVentas(request,idProducto):
                 messages.error(request," No hay sificiente producto en inventario para esa compra")
                 return render(request, 'Tienda/resumenVenta.html',{'form':form})
             else:
+                messages.success(request,"Venta exitosa")
                 producto.numExistencias=producto.numExistencias-resta
                 if(producto.numExistencias==0):
                     producto.disponible=False
