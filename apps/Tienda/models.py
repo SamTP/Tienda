@@ -12,7 +12,7 @@ class Producto(models.Model):
         Categoria, null=True, blank=True, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=75)
-    costo = models.DecimalField(decimal_places=2, max_digits=6)
+    costo = models.DecimalField(decimal_places=2, max_digits=15)
     disponible = models.BooleanField()
     numExistencias = models.IntegerField()
 
@@ -20,8 +20,8 @@ class Ventas(models.Model):
     # producto=models.ForeignKey(
     #     Producto,blank=True, null=True,on_delete=models.CASCADE)
     producto=models.CharField(max_length=75,default=" ")
-    precio=models.DecimalField(decimal_places=2,max_digits=7,default=0)
+    precio=models.DecimalField(decimal_places=2,max_digits=15,default=0)
     cantidad=models.IntegerField(default=0)
-    total=models.DecimalField(decimal_places=2,max_digits=7,default=0)
+    total=models.DecimalField(decimal_places=2,max_digits=15,default=0)
 
 
